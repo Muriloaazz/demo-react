@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida Marinha - Carrossel 3D</title>
+    <title>Preserv Ocean</title>
+     <link rel="icon" type="image/jpeg" href="./src/assets/logocerta11.jpg">
     <style>
         * {
             margin: 0;
@@ -39,335 +40,23 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 210px 20px 40px;
+            padding: 30px 20px 40px;
             position: relative;
             z-index: 1;
         }
 
-        .title {
-            color: #40e0ff;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(64, 224, 255, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(64, 224, 255, 0.5); }
-            to { text-shadow: 0 0 30px rgba(64, 224, 255, 0.8), 0 0 40px rgba(64, 224, 255, 0.3); }
-        }
-
-        .subtitle {
-            color: #87ceeb;
-            font-size: 1.1rem;
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .carousel-container {
-            perspective: 1000px;
-            width: 100%;
-            max-width: 900px;
-            height: 400px;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-
-        .carousel-item {
-            position: absolute;
-            width: 200px;
-            height: 250px;
-            left: 50%;
-            top: 50%;
-            margin-left: -100px;
-            margin-top: -125px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
-            cursor: pointer;
-            background: linear-gradient(135deg, rgba(64, 224, 255, 0.2), rgba(0, 100, 200, 0.2));
-            backdrop-filter: blur(15px);
-        }
-
-        .carousel-item:hover {
-            transform: scale(1.05) translateY(-10px);
-            box-shadow: 0 30px 60px rgba(64, 224, 255, 0.3);
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 65%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .item-content {
-            padding: 15px;
-            height: 35%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(0, 50, 100, 0.95), rgba(0, 30, 60, 0.95));
-            border-top: 2px solid rgba(64, 224, 255, 0.3);
-        }
-
-        .item-title {
-            color: #40e0ff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-shadow: 0 0 15px rgba(64, 224, 255, 0.5);
-            text-align: center;
-        }
-
-        .item-description {
-            color: #e0f6ff;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            text-align: center;
-            font-weight: 300;
-        }
-
-        .auto-play-toggle {
-            background: rgba(0, 17, 34, 0.95);
-            backdrop-filter: blur(10px);
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 17, 34, 0.3);
-            margin-top: 40px;
-        }
-
-        .auto-play-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 17, 34, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .title { font-size: 2rem; }
-            .carousel-container { height: 300px; }
-            .carousel-item { width: 160px; height: 200px; margin-left: -80px; margin-top: -100px; }
-            .controls { flex-direction: column; gap: 15px; }
-            .item-title { font-size: 1rem; }
-            .item-description { font-size: 0.75rem; }
-        }
     </style>
 </head>
 <body>
     <div class="container">
 
         
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <!-- Os itens serão gerados dinamicamente -->
-            </div>
-        </div>
-        
 
-        
-        <button class="auto-play-toggle" id="autoPlayToggle">▶ Auto Play</button>
     </div>
 
     <script>
-        const marineLifeData = [
-            {
-                title: "Golfinho",
-                description: "Mamíferos marinhos inteligentes conhecidos por sua sociabilidade e acrobacias.",
-                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Tartaruga Marinha",
-                description: "Répteis antigos que navegam pelos oceanos há milhões de anos.",
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Tubarão",
-                description: "Predadores apex que mantêm o equilíbrio dos ecossistemas marinhos.",
-                image: "https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Peixe Palhaço",
-                description: "Pequenos peixes coloridos que vivem em simbiose com anêmonas-do-mar.",
-                image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Baleia Azul",
-                description: "O maior animal do planeta, filtrando toneladas de krill diariamente.",
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Polvo",
-                description: "Invertebrados inteligentes com habilidades de camuflagem incríveis.",
-                image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Estrela-do-Mar",
-                description: "Equinodermos com capacidade regenerativa extraordinária.",
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
-            },
-            {
-                title: "Cavalo-Marinho",
-                description: "Criaturas únicas onde o macho carrega os ovos até a eclosão.",
-                image: "https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=400&h=600&fit=crop"
-            }
-        ];
 
-        let currentIndex = 0;
-        let isAutoPlay = false;
-        let autoPlayInterval;
-
-        const carousel = document.getElementById('carousel');
-        const autoPlayToggle = document.getElementById('autoPlayToggle');
-
-        function createBubbles() {
-            for (let i = 0; i < 20; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.style.left = Math.random() * 100 + '%';
-                bubble.style.top = Math.random() * 100 + '%';
-                bubble.style.width = (Math.random() * 60 + 20) + 'px';
-                bubble.style.height = bubble.style.width;
-                bubble.style.animationDelay = Math.random() * 6 + 's';
-                bubble.style.animationDuration = (Math.random() * 4 + 4) + 's';
-                document.body.appendChild(bubble);
-            }
-        }
-
-        function initCarousel() {
-            carousel.innerHTML = '';
-
-            marineLifeData.forEach((item, index) => {
-                // Criar item do carrossel
-                const carouselItem = document.createElement('div');
-                carouselItem.className = 'carousel-item';
-                carouselItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}" loading="lazy">
-                    <div class="item-content">
-                        <h3 class="item-title">${item.title}</h3>
-                        <p class="item-description">${item.description}</p>
-                    </div>
-                `;
-                carousel.appendChild(carouselItem);
-            });
-
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const items = carousel.children;
-            const totalItems = items.length;
-            const radius = 320;
-            const angleStep = (2 * Math.PI) / totalItems;
-
-            for (let i = 0; i < totalItems; i++) {
-                const angle = i * angleStep - (currentIndex * angleStep);
-                const x = Math.sin(angle) * radius;
-                const z = Math.cos(angle) * radius;
-                
-                const item = items[i];
-                item.style.transform = `
-                    translate3d(${x}px, 0, ${z}px) 
-                    rotateY(${-angle}rad)
-                    ${i === currentIndex ? 'scale(1.1)' : 'scale(0.9)'}
-                `;
-                item.style.opacity = i === currentIndex ? '1' : '0.5';
-                item.style.zIndex = i === currentIndex ? '10' : '1';
-                
-                // Adicionar destaque visual ao item ativo
-                if (i === currentIndex) {
-                    item.style.filter = 'brightness(1.2) saturate(1.3)';
-                } else {
-                    item.style.filter = 'brightness(0.7) saturate(0.8)';
-                }
-            }
-
-
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % marineLifeData.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + marineLifeData.length) % marineLifeData.length;
-            updateCarousel();
-        }
-
-        function toggleAutoPlay() {
-            isAutoPlay = !isAutoPlay;
-            
-            if (isAutoPlay) {
-                autoPlayToggle.textContent = '⏸ Pausar';
-                autoPlayInterval = setInterval(nextSlide, 3000);
-            } else {
-                autoPlayToggle.textContent = '▶ Auto Play';
-                clearInterval(autoPlayInterval);
-            }
-        }
-
-        // Event listeners
-        autoPlayToggle.addEventListener('click', toggleAutoPlay);
-
-        // Navegação por teclado
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === ' ') {
-                e.preventDefault();
-                toggleAutoPlay();
-            }
-        });
-
-        // Touch/swipe support
-        let startX = 0;
-        let endX = 0;
-
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        carousel.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-            }
-        });
-
-        // Inicializar
-        createBubbles();
-        initCarousel();
     </script>
 </body>
 </html>
@@ -386,6 +75,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preserv Ocean - Preservação da Vida Marinha</title>
+    <link rel="icon" type="image/jpeg" href="./src/assets/logocerta11.jpg">
     <style>
         * {
             margin: 0;
@@ -549,10 +239,11 @@
         .hero {
             height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             text-align: center;
             position: relative;
+            padding-top: 120px;
         }
 
         .hero-content {
@@ -587,6 +278,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 204, 255, 0.3);
+            margin-bottom: 50px;
         }
 
         .cta-button:hover {
@@ -594,9 +286,67 @@
             box-shadow: 0 15px 40px rgba(0, 204, 255, 0.5);
         }
 
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto 3rem;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+        }
+
+        .top-video-section {
+            padding-top: 100px;
+            padding-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .top-video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 40%;
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .top-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+
+
         /* Sections */
         .section {
-            padding: 5rem 0;
+            padding: 1rem 0;
             max-width: 1200px;
             margin: 0 auto;
             padding-left: 2rem;
@@ -978,7 +728,23 @@
         </nav>
     </header>
 
-    <section id="vida-marinha" class="section fade-in" style="padding-top: 120px;">
+    <section class="top-video-section">
+        <div class="top-video-container">
+            <iframe src="https://www.youtube.com/embed/AlGVqAXqBLw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Preserve Nossos Oceanos</h1>
+            <p>Juntos podemos proteger a vida marinha e garantir um futuro sustentável para as próximas gerações</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/-UmOPQRpRIE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="vida-marinha" class="section fade-in" style="padding-top: 8rem;">
         <h2>O que é a Vida Marinha?</h2>
         <div class="action-section">
             <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left;">
@@ -1034,14 +800,6 @@
                 <h3>Equinodermos</h3>
                 <p>Estrelas-do-mar, ouriços-do-mar e pepinos-do-mar possuem esqueleto interno calcificado e são importantes predadores e decompositores.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Preserve Nossos Oceanos</h1>
-            <p>Juntos podemos proteger a vida marinha e garantir um futuro sustentável para as próximas gerações</p>
-            <a href="#about" class="cta-button">Descubra Como Ajudar</a>
         </div>
     </section>
 
@@ -1585,18 +1343,13 @@
                     
                 </div>
 
-                <div class="footer-section">
-                    <h3>Serviços</h3>
-                    <ul class="footer-links">
-                       
-                    </ul>
-                </div>
+
 
                 <div class="footer-section">
                     <h3>Nosso Projeto</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Nossa Equipe</a></li>
+                        <li><a href="loading.html?page=sobre-nos.html">Sobre Nós</a></li>
+                        <li><a href="loading.html?page=nossa-equipe.html">Nossa Equipe</a></li>
                     </ul>
                 </div>
 
@@ -1616,7 +1369,7 @@
                         </div>
                         <div class="info-item">
                             <div class="icon">🌐</div>
-                            <span>www.preservocean.com.br</span>
+                            <span><a href="https://www.preservocean.com.br" target="_blank" style="color: inherit; text-decoration: none;">www.preservocean.com.br</a></span>
                         </div>
                     </div>
                 </div>
@@ -1744,7 +1497,23 @@
             }
         }
 
-        // Inicializar partículas do footer
+        // Criar bolhas animadas
+        function createBubbles() {
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.top = Math.random() * 100 + '%';
+                bubble.style.width = (Math.random() * 60 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = Math.random() * 6 + 's';
+                bubble.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.body.appendChild(bubble);
+            }
+        }
+
+        // Inicializar
+        createBubbles();
         createFooterParticles();
     </script>
 </body>
