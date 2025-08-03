@@ -68,17 +68,17 @@ header {
   background: rgba(0, 17, 34, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: 0.3rem 0;
+  padding: 0.1rem 0;
   transition: all 0.3s ease;
 }
 
 nav {
-  max-width: 1600px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .logo {
@@ -93,7 +93,9 @@ nav {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 3rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -101,7 +103,8 @@ nav {
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
 }
 
 .nav-links a:hover {

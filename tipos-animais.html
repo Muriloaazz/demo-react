@@ -218,6 +218,31 @@
             color: #00ccff;
         }
 
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+            border-color: #00ccff;
+            box-shadow: 0 10px 20px rgba(0, 204, 255, 0.3);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -278,6 +303,230 @@
                 <li><strong>Orca</strong> - Predador apex dos oceanos</li>
                 <li><strong>Peixe-boi</strong> - Herbívoro aquático</li>
             </ul>
+            
+            <div class="image-gallery">
+                <img src="src/assets/imagem10.jpg" alt="Baleia-azul" class="gallery-image">
+                <img src="src/assets/imagem11.jpg" alt="Golfinho" class="gallery-image">
+                <img src="src/assets/imagem12.jpg" alt="Foca" class="gallery-image">
+                <img src="src/assets/imagem13.jpg" alt="Orca" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Peixes Marinhos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Peixes Marinhos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Peixes marinhos são vertebrados aquáticos que vivem exclusivamente em água salgada. 
+                Possuem brânquias para respirar oxigênio dissolvido na água, nadadeiras para locomoção 
+                e escamas que os protegem. São animais de sangue frio que se adaptaram perfeitamente 
+                ao ambiente marinho.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Tubarão-branco</strong> - Predador apex dos oceanos</li>
+                <li><strong>Atum</strong> - Peixe migratório de grande porte</li>
+                <li><strong>Peixe-palhaço</strong> - Vive em simbiose com anêmonas</li>
+                <li><strong>Linguado</strong> - Peixe achatado que vive no fundo</li>
+                <li><strong>Sardinha</strong> - Forma grandes cardumes</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Tubarão-branco" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1544551763-77e08dba1ef7?w=400&h=300&fit=crop" alt="Atum" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Peixe-palhaço" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Linguado" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Crustáceos Marinhos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Crustáceos Marinhos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Crustáceos marinhos são artrópodes aquáticos que possuem exoesqueleto rígido feito de quitina, 
+                corpo segmentado e patas articuladas. Vivem principalmente no fundo do mar e possuem 
+                antenas, garras ou pinças para capturar alimento. Fazem muda do exoesqueleto para crescer.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Caranguejo</strong> - Possui pinças poderosas</li>
+                <li><strong>Lagosta</strong> - Crustáceo de grande valor comercial</li>
+                <li><strong>Camarão</strong> - Pequeno e abundante nos oceanos</li>
+                <li><strong>Siri</strong> - Vive em águas rasas e praias</li>
+                <li><strong>Krill</strong> - Base da cadeia alimentar marinha</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Caranguejo" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Lagosta" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop" alt="Camarão" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Siri" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Esponjas Marinhas</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Esponjas Marinhas?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Esponjas marinhas são animais invertebrados primitivos que vivem fixos no fundo do mar. 
+                Possuem corpo poroso com canais internos por onde a água circula, permitindo a filtração 
+                de alimentos e oxigênio. São importantes filtradores naturais dos oceanos.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Esponja-do-mar</strong> - Usada para banho e limpeza</li>
+                <li><strong>Esponja-barril</strong> - Grande e em forma de barril</li>
+                <li><strong>Esponja-tubo</strong> - Cresce em forma tubular</li>
+                <li><strong>Esponja-incrustante</strong> - Cresce sobre rochas</li>
+                <li><strong>Esponja-vidro</strong> - Possui espículas de sílica</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Esponja-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Esponja-barril" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Esponja-tubo" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Esponja-incrustante" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Répteis Marinhos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Répteis Marinhos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Répteis marinhos são vertebrados de sangue frio que se adaptaram à vida nos oceanos. 
+                Possuem pele escamosa, respiram ar através de pulmões e precisam retornar à superfície 
+                para respirar. Muitos retornam à terra para se reproduzir e botar ovos.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Tartaruga-marinha</strong> - Migra longas distâncias</li>
+                <li><strong>Iguana-marinha</strong> - Única iguana que nada</li>
+                <li><strong>Serpente-marinha</strong> - Venenosa e aquática</li>
+                <li><strong>Crocodilo-marinho</strong> - Maior réptil do mundo</li>
+                <li><strong>Tartaruga-de-couro</strong> - Maior tartaruga marinha</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Tartaruga-marinha" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Iguana-marinha" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Serpente-marinha" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Crocodilo-marinho" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Equinodermos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Equinodermos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Equinodermos são invertebrados marinhos que possuem simetria radial e esqueleto interno 
+                calcificado. Caracterizam-se por ter espinhos na pele e um sistema vascular aquífero 
+                único que os ajuda na locomoção e alimentação. Vivem exclusivamente em ambientes marinhos.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Estrela-do-mar</strong> - Pode regenerar braços perdidos</li>
+                <li><strong>Ouriço-do-mar</strong> - Possui espinhos para proteção</li>
+                <li><strong>Pepino-do-mar</strong> - Corpo alongado e mole</li>
+                <li><strong>Bolacha-da-praia</strong> - Achatada e circular</li>
+                <li><strong>Lírio-do-mar</strong> - Possui braços plumosos</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Estrela-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Ouriço-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Pepino-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Bolacha-da-praia" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Cnidários</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Cnidários?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Cnidários são invertebrados aquáticos que possuem células urticantes chamadas cnidoblastos. 
+                Têm corpo mole, simetria radial e podem existir em duas formas: pólipo (fixo) ou medusa (livre). 
+                São predadores que capturam presas com seus tentáculos venenosos.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Água-viva</strong> - Flutua livremente nos oceanos</li>
+                <li><strong>Coral</strong> - Forma recifes coloridos</li>
+                <li><strong>Anêmona-do-mar</strong> - Vive fixa em rochas</li>
+                <li><strong>Caravela-portuguesa</strong> - Possui tentáculos longos</li>
+                <li><strong>Hidra-do-mar</strong> - Pequena e colonial</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Água-viva" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Coral" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Anêmona-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Caravela-portuguesa" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Vermes Marinhos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Vermes Marinhos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Vermes marinhos são invertebrados de corpo alongado e mole que vivem nos oceanos. 
+                Possuem grande diversidade de formas e tamanhos, podendo ser segmentados ou não. 
+                Muitos vivem no sedimento marinho, outros são parasitas ou de vida livre na água.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Minhoca-do-mar</strong> - Vive enterrada na areia</li>
+                <li><strong>Verme-tubo</strong> - Constrói tubos calcificados</li>
+                <li><strong>Planaria-marinha</strong> - Corpo achatado e regenerativo</li>
+                <li><strong>Nemeríneo</strong> - Predador com proboscida</li>
+                <li><strong>Verme-de-fogo</strong> - Possui cerdas irritantes</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Minhoca-do-mar" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Verme-tubo" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Planaria-marinha" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Verme-de-fogo" class="gallery-image">
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Rotíferos</h1>
+            
+            <h2 style="text-align: center; color: #00ccff; margin-bottom: 2rem;">O que são Rotíferos?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                Rotíferos são microorganismos aquáticos multicelulares que possuem uma coroa de cílios 
+                em movimento rotativo ao redor da boca. São animais microscópicos que se alimentam 
+                de bactérias, algas e partículas orgânicas. Vivem tanto em água doce quanto salgada.
+            </p>
+            
+            <h3 style="color: #00ccff; margin-bottom: 1rem; text-align: center;">5 Principais Exemplos:</h3>
+            <ul style="font-size: 1.2rem; line-height: 2; text-align: center; max-width: 600px; margin: 0 auto; list-style: none;">
+                <li><strong>Brachionus</strong> - Comum no plancton marinho</li>
+                <li><strong>Keratella</strong> - Possui carapace transparente</li>
+                <li><strong>Synchaeta</strong> - Nada livremente na água</li>
+                <li><strong>Encentrum</strong> - Vive fixo em substratos</li>
+                <li><strong>Lecane</strong> - Pequeno e abundante</li>
+            </ul>
+            
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Brachionus" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop" alt="Keratella" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=300&fit=crop" alt="Synchaeta" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Lecane" class="gallery-image">
+            </div>
         </section>
     </main>
 </body>
