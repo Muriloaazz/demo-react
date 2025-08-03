@@ -3,6 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Marinha - Carrossel 3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #001a2e 0%, #003366 50%, #004d7a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animação de bolhas de fundo */
+        .bubble {
+            position: absolute;
+            background: rgba(64, 224, 255, 0.1);
+            border-radius: 50%;
+            animation: bubble-float 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes bubble-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.7; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 210px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            color: #40e0ff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(64, 224, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(64, 224, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(64, 224, 255, 0.8), 0 0 40px rgba(64, 224, 255, 0.3); }
+        }
+
+        .subtitle {
+            color: #87ceeb;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .carousel-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -125px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(64, 224, 255, 0.2), rgba(0, 100, 200, 0.2));
+            backdrop-filter: blur(15px);
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(64, 224, 255, 0.3);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 65%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .item-content {
+            padding: 15px;
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 50, 100, 0.95), rgba(0, 30, 60, 0.95));
+            border-top: 2px solid rgba(64, 224, 255, 0.3);
+        }
+
+        .item-title {
+            color: #40e0ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(64, 224, 255, 0.5);
+            text-align: center;
+        }
+
+        .item-description {
+            color: #e0f6ff;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .auto-play-toggle {
+            background: rgba(0, 17, 34, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 17, 34, 0.3);
+            margin-top: 40px;
+        }
+
+        .auto-play-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 17, 34, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .carousel-container { height: 300px; }
+            .carousel-item { width: 160px; height: 200px; margin-left: -80px; margin-top: -100px; }
+            .controls { flex-direction: column; gap: 15px; }
+            .item-title { font-size: 1rem; }
+            .item-description { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <!-- Os itens serão gerados dinamicamente -->
+            </div>
+        </div>
+        
+
+        
+        <button class="auto-play-toggle" id="autoPlayToggle">▶ Auto Play</button>
+    </div>
+
+    <script>
+        const marineLifeData = [
+            {
+                title: "Golfinho",
+                description: "Mamíferos marinhos inteligentes conhecidos por sua sociabilidade e acrobacias.",
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Tartaruga Marinha",
+                description: "Répteis antigos que navegam pelos oceanos há milhões de anos.",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Tubarão",
+                description: "Predadores apex que mantêm o equilíbrio dos ecossistemas marinhos.",
+                image: "https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Peixe Palhaço",
+                description: "Pequenos peixes coloridos que vivem em simbiose com anêmonas-do-mar.",
+                image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Baleia Azul",
+                description: "O maior animal do planeta, filtrando toneladas de krill diariamente.",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Polvo",
+                description: "Invertebrados inteligentes com habilidades de camuflagem incríveis.",
+                image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Estrela-do-Mar",
+                description: "Equinodermos com capacidade regenerativa extraordinária.",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop"
+            },
+            {
+                title: "Cavalo-Marinho",
+                description: "Criaturas únicas onde o macho carrega os ovos até a eclosão.",
+                image: "https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=400&h=600&fit=crop"
+            }
+        ];
+
+        let currentIndex = 0;
+        let isAutoPlay = false;
+        let autoPlayInterval;
+
+        const carousel = document.getElementById('carousel');
+        const autoPlayToggle = document.getElementById('autoPlayToggle');
+
+        function createBubbles() {
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.top = Math.random() * 100 + '%';
+                bubble.style.width = (Math.random() * 60 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = Math.random() * 6 + 's';
+                bubble.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.body.appendChild(bubble);
+            }
+        }
+
+        function initCarousel() {
+            carousel.innerHTML = '';
+
+            marineLifeData.forEach((item, index) => {
+                // Criar item do carrossel
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item';
+                carouselItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    <div class="item-content">
+                        <h3 class="item-title">${item.title}</h3>
+                        <p class="item-description">${item.description}</p>
+                    </div>
+                `;
+                carousel.appendChild(carouselItem);
+            });
+
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const items = carousel.children;
+            const totalItems = items.length;
+            const radius = 320;
+            const angleStep = (2 * Math.PI) / totalItems;
+
+            for (let i = 0; i < totalItems; i++) {
+                const angle = i * angleStep - (currentIndex * angleStep);
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                
+                const item = items[i];
+                item.style.transform = `
+                    translate3d(${x}px, 0, ${z}px) 
+                    rotateY(${-angle}rad)
+                    ${i === currentIndex ? 'scale(1.1)' : 'scale(0.9)'}
+                `;
+                item.style.opacity = i === currentIndex ? '1' : '0.5';
+                item.style.zIndex = i === currentIndex ? '10' : '1';
+                
+                // Adicionar destaque visual ao item ativo
+                if (i === currentIndex) {
+                    item.style.filter = 'brightness(1.2) saturate(1.3)';
+                } else {
+                    item.style.filter = 'brightness(0.7) saturate(0.8)';
+                }
+            }
+
+
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % marineLifeData.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + marineLifeData.length) % marineLifeData.length;
+            updateCarousel();
+        }
+
+        function toggleAutoPlay() {
+            isAutoPlay = !isAutoPlay;
+            
+            if (isAutoPlay) {
+                autoPlayToggle.textContent = '⏸ Pausar';
+                autoPlayInterval = setInterval(nextSlide, 3000);
+            } else {
+                autoPlayToggle.textContent = '▶ Auto Play';
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        // Event listeners
+        autoPlayToggle.addEventListener('click', toggleAutoPlay);
+
+        // Navegação por teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoPlay();
+            }
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+
+        // Inicializar
+        createBubbles();
+        initCarousel();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preserv Ocean - Preservação da Vida Marinha</title>
     <style>
         * {
@@ -301,10 +683,100 @@
         }
 
         footer {
-            background: rgba(0, 17, 34, 0.9);
+            position: relative;
             padding: 4rem 2rem 2rem;
             margin-top: 5rem;
             border-top: 2px solid rgba(0, 204, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .footer-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .footer-video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-3d-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 17, 34, 0.95) 0%,
+                rgba(0, 51, 102, 0.9) 25%,
+                rgba(0, 68, 136, 0.85) 50%,
+                rgba(0, 102, 170, 0.9) 75%,
+                rgba(0, 17, 34, 0.95) 100%
+            );
+            z-index: -1;
+        }
+
+        .footer-3d-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 136, 204, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(64, 224, 255, 0.05) 0%, transparent 70%);
+            animation: float3d 8s ease-in-out infinite;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .footer-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 204, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 12s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(0);
+                opacity: 0;
+            }
         }
 
         .footer-content {
@@ -314,6 +786,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h4 {
@@ -373,6 +847,8 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
         }
 
         .newsletter {
@@ -691,53 +1167,462 @@
     </section>
 
     <footer>
+       <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodapé 3D de Alto Luxo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow-x: hidden;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .luxury-footer {
+            position: relative;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        .geometric-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            transform: rotate(45deg);
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            border-radius: 50%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            left: 80%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: 4s;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 10;
+            padding: 4rem 2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section {
+            position: relative;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #4169e1);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #8a2be2, #4169e1);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(10px);
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+
+        .contact-info {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-info .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            background: linear-gradient(45deg, #8a2be2, #4169e1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.2), rgba(65, 105, 225, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) rotateY(15deg);
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.4), rgba(65, 105, 225, 0.4));
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+            color: #fff;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8a2be2, #4169e1, transparent);
+            animation: slideGlow 3s ease-in-out infinite;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .brand-logo {
+            font-size: 2rem;
+            font-weight: 100;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #8a2be2, #4169e1, #8a2be2);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 8s linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-10px); opacity: 0.5; }
+            50% { transform: translateX(10px); opacity: 1; }
+        }
+
+        @keyframes slideGlow {
+            0% { transform: translateX(-200px); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(200px); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100px) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .social-media {
+                justify-content: center;
+            }
+            
+            .brand-logo {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <p>Seu conteúdo principal aqui...</p>
+    </div>
+
+    <footer class="luxury-footer">
+        <div class="video-background"></div>
+        
+        <div class="geometric-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>🌊 Preserv Ocean</h4>
-                <p>Organização dedicada à preservação dos oceanos e proteção da vida marinha. Trabalhamos incansavelmente por um futuro sustentável para nossos mares.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📺</a>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="brand-logo">LUXE</div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-top: 1rem;">
+                        Experiências digitais de alto padrão que transcendem expectativas e criam conexões extraordinárias com nossos clientes.
+                    </p>
+                    <div class="social-media">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Consultoria Premium</a></li>
+                        <li><a href="#">Desenvolvimento Exclusivo</a></li>
+                        <li><a href="#">Design de Luxo</a></li>
+                        <li><a href="#">Estratégia Digital</a></li>
+                        <li><a href="#">Suporte VIP</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Empresa</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Nossa Equipe</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Parceiros</a></li>
+                        <li><a href="#">Prêmios</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="icon">📍</div>
+                            <span>Av. Paulista, 1000 - São Paulo, SP</span>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">📞</div>
+                            <span>+55 (11) 9999-9999</span>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">✉️</div>
+                            <span>contato@luxe.com.br</span>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon">🌐</div>
+                            <span>www.luxe.com.br</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="footer-section">
-                <h4>Links Úteis</h4>
-                <ul>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#threats">Ameaças Marinhas</a></li>
-                    <li><a href="#actions">Como Ajudar</a></li>
-                    <li><a href="#">Projetos Ativos</a></li>
-                    <li><a href="#">Relatórios Anuais</a></li>
-                    <li><a href="#">Galeria de Fotos</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <div class="brand-logo">LUXE</div>
+                <p class="copyright">
+                    © 2025 LUXE. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
+                </p>
             </div>
-
-            <div class="footer-section">
-                <h4>Recursos</h4>
-                <ul>
-                    <li><a href="#">Guia de Conservação</a></li>
-                    <li><a href="#">Espécies Ameaçadas</a></li>
-                    <li><a href="#">Dados e Estatísticas</a></li>
-                    <li><a href="#">Material Educativo</a></li>
-                    <li><a href="#">Pesquisas Científicas</a></li>
-                    <li><a href="#">Parcerias</a></li>
-                    <li><a href="#">Voluntariado</a></li>
-                </ul>
-            </div>
-
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2025 Preserv Ocean - Preservação Marinha. Todos os direitos reservados.</p>
-            <p style="margin-top: 0.5rem;">Feito com 💙 para nossos oceanos | <a href="#" style="color: #00ccff;">Política de Privacidade</a> | <a href="#" style="color: #00ccff;">Termos de Uso</a></p>
-            <p style="margin-top: 1rem; font-size: 0.8rem;">Certificação ISO 14001 | Membro da Rede Global de Conservação Marinha</p>
         </div>
     </footer>
+</body>
+</html>
 
     <script>
         // Animação de scroll suave
@@ -834,6 +1719,24 @@
             
             statsObserver.observe(statsSection);
         }
+
+        // Criar partículas animadas no footer
+        function createFooterParticles() {
+            const particlesContainer = document.getElementById('footerParticles');
+            if (!particlesContainer) return;
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Inicializar partículas do footer
+        createFooterParticles();
     </script>
 </body>
 </html>
