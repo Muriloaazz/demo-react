@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetivo do Projeto - Preserv Ocean</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                #001122 0%, 
+                #003366 25%, 
+                #004488 50%, 
+                #0066aa 75%, 
+                #0088cc 100%);
+            z-index: -2;
+        }
+
+        .waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .wave {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"></path></svg>');
+            position: absolute;
+            width: 100%;
+            height: 120px;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            top: 20px;
+            animation: wave 15s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            top: 40px;
+            animation: wave 12s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 17, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            margin-left: -1rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 204, 255, 0.3);
+            background: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00ccff;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00ccff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-section {
+            background: rgba(0, 136, 204, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(0, 136, 204, 0.3);
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            color: #00ccff;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .mission-section p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ccff;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 204, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ccff;
+            display: block;
+        }
+
+        .goals-section {
+            background: rgba(0, 204, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 4rem;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+        }
+
+        .goals-section h2 {
+            color: #00ccff;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .goals-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #00ccff;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="src/assets/logo1.jpg" alt="Preserv Ocean" style="height: 40px; margin-right: 10px; border-radius: 5px;">
+                Preserv Ocean
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#threats">Ameaças</a></li>
+                <li><a href="index.html#actions">Ações</a></li>
+                <li><a href="justificativa.html">Justificativa do Projeto</a></li>
+                <li><a href="objetivo.html">Objetivo do Projeto</a></li>
+                <li><a href="tipos-animais.html">Tipos de animais marinhos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <h1>Objetivo do Projeto</h1>
+            
+            <div class="mission-section">
+                <h2>Nossa Missão</h2>
+                <p>
+                    Criar uma plataforma educativa e mobilizadora que conscientize a população sobre a importância da preservação marinha e promova ações concretas para a proteção dos oceanos.
+                </p>
+                <p>
+                    Através da educação, engajamento e ação coletiva, buscamos formar uma rede global de defensores dos oceanos, capacitados para implementar mudanças significativas em suas comunidades e influenciar políticas públicas de conservação marinha.
+                </p>
+            </div>
+
+            <div class="cards-container">
+                <div class="card">
+                    <span class="card-icon">📚</span>
+                    <h3>Educação e Conscientização</h3>
+                    <p>Informar e educar o público sobre as ameaças aos oceanos, fornecendo dados científicos atualizados e soluções práticas para a conservação marinha através de conteúdo acessível e envolvente.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤝</span>
+                    <h3>Mobilização Social</h3>
+                    <p>Engajar comunidades, escolas e organizações em ações coletivas de preservação, criando uma rede ativa de defensores dos oceanos e promovendo o voluntariado ambiental.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎯</span>
+                    <h3>Ações Práticas</h3>
+                    <p>Promover iniciativas concretas como limpeza de praias, redução do uso de plásticos e apoio a políticas públicas de proteção marinha, transformando conhecimento em ação.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📊</span>
+                    <h3>Monitoramento e Impacto</h3>
+                    <p>Acompanhar e medir o impacto das ações realizadas, compartilhando resultados e inspirando mais pessoas a se juntarem à causa através de dados transparentes.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🌐</span>
+                    <h3>Rede de Parcerias</h3>
+                    <p>Estabelecer parcerias estratégicas com ONGs, instituições de pesquisa, empresas e governos para amplificar o impacto das ações de conservação marinha.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔬</span>
+                    <h3>Pesquisa e Inovação</h3>
+                    <p>Apoiar e divulgar pesquisas científicas sobre conservação marinha, promovendo soluções inovadoras e tecnologias sustentáveis para a proteção dos oceanos.</p>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat">
+                    <span class="stat-number">100mil</span>
+                    <span>pessoas conscientizadas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500</span>
+                    <span>ações de limpeza organizadas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50</span>
+                    <span>parcerias estabelecidas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1000</span>
+                    <span>voluntários ativos</span>
+                </div>
+            </div>
+
+            <div class="goals-section">
+                <h2>Metas Específicas do Projeto</h2>
+                <ul class="goals-list">
+                    <li>🎓 Desenvolver materiais educativos sobre conservação marinha para diferentes faixas etárias</li>
+                    <li>🌊 Organizar campanhas de limpeza de praias e ambientes costeiros</li>
+                    <li>📱 Criar uma plataforma digital interativa para engajamento e educação</li>
+                    <li>🏫 Implementar programas educacionais em escolas e universidades</li>
+                    <li>🤝 Estabelecer parcerias com organizações ambientais e instituições de pesquisa</li>
+                    <li>📊 Monitorar e documentar o impacto das ações realizadas</li>
+                    <li>🗣️ Promover eventos e palestras sobre preservação marinha</li>
+                    <li>💡 Incentivar a adoção de práticas sustentáveis no dia a dia</li>
+                    <li>🏛️ Influenciar políticas públicas de proteção aos oceanos</li>
+                    <li>🌍 Expandir o alcance do projeto para outras regiões e países</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

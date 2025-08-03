@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaVida - Preservação da Vida Marinha</title>
+    <title>Preserv Ocean - Preservação da Vida Marinha</title>
     <style>
         * {
             margin: 0;
@@ -95,6 +95,17 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            display: flex;
+            align-items: center;
+            margin-left: -1rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 204, 255, 0.3);
+            background: transparent;
         }
 
         .nav-links {
@@ -291,9 +302,109 @@
 
         footer {
             background: rgba(0, 17, 34, 0.9);
-            text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem 2rem;
             margin-top: 5rem;
+            border-top: 2px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #00ccff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 204, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00ccff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 204, 255, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 204, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter {
+            background: rgba(0, 204, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .newsletter input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter button {
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.3);
         }
 
         @keyframes fadeInUp {
@@ -353,16 +464,80 @@
 
     <header>
         <nav>
-            <div class="logo">🌊 AquaVida</div>
+            <div class="logo">
+                <img src="src/assets/logo1.jpg" alt="Preserv Ocean" style="height: 40px; margin-right: 10px; border-radius: 5px;">
+                Preserv Ocean
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#threats">Ameaças</a></li>
                 <li><a href="#actions">Ações</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="justificativa.html">Justificativa do Projeto</a></li>
+                <li><a href="objetivo.html">Objetivo do Projeto</a></li>
+                <li><a href="tipos-animais.html">Tipos de animais marinhos</a></li>
             </ul>
         </nav>
     </header>
+
+    <section id="vida-marinha" class="section fade-in" style="padding-top: 120px;">
+        <h2>O que é a Vida Marinha?</h2>
+        <div class="action-section">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left;">
+                A vida marinha engloba todos os organismos que habitam os oceanos, mares e ambientes aquáticos salinos. 
+                Desde microscópicos plânctons até majestosas baleias, cada forma de vida desempenha um papel fundamental 
+                no equilíbrio dos ecossistemas oceânicos.
+            </p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <img src="./src/assets/imagem1.jpg" alt="Mamíferos Marinhos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Mamíferos</h3>
+                <p>Baleias, golfinhos, focas e dugongos são mamíferos que evoluíram para viver nos oceanos, sendo essenciais para o equilíbrio marinho.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem2.jpg" alt="Peixes" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Peixes</h3>
+                <p>Mais de 34.000 espécies de peixes habitam os oceanos, desde pequenos peixes coloridos até grandes predadores como tubarões e raias.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem3.jpg" alt="Moluscos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Moluscos</h3>
+                <p>Polvos, lulas, caracois marinhos e ostras formam este grupo diverso, com conchas ou corpos moles adaptados à vida aquática.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem4.jpg" alt="Crustáceos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Crustáceos</h3>
+                <p>Caranguejos, lagostas, camarões e cracas possuem exoesqueleto rígido e são fundamentais na cadeia alimentar marinha.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem5.jpg" alt="Répteis" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Répteis</h3>
+                <p>Tartarugas marinhas, serpentes marinhas e iguanas marinhas são répteis adaptados à vida nos oceanos e costas.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem6.jpg" alt="Esponjas" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Esponjas</h3>
+                <p>Organismos multicelulares primitivos que filtram água do mar, sendo fundamentais para a limpeza e oxigenação dos oceanos.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem7.jpg" alt="Vermes Marinhos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Vermes Marinhos</h3>
+                <p>Políquetas e outros vermes marinhos vivem no sedimento oceânico, reciclando nutrientes e servindo de alimento para outros animais.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem8.jpg" alt="Rotíferos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Rotíferos</h3>
+                <p>Microorganismos aquáticos com estruturas ciliadas rotativas, essenciais no plâncton e na base da cadeia alimentar marinha.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem9.jpg" alt="Equinodermos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Equinodermos</h3>
+                <p>Estrelas-do-mar, ouriços-do-mar e pepinos-do-mar possuem esqueleto interno calcificado e são importantes predadores e decompositores.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -470,6 +645,31 @@
                 <h3>Eduque e Compartilhe</h3>
                 <p>Compartilhe conhecimento sobre conservação marinha. Quanto mais pessoas souberem, maior será o impacto positivo.</p>
             </div>
+            <div class="card">
+                <span class="card-icon">🌱</span>
+                <h3>Apoie Organizações</h3>
+                <p>Doe ou seja voluntário em ONGs de conservação marinha. Seu apoio financeiro ou tempo ajuda a financiar pesquisas e projetos de proteção.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🏖️</span>
+                <h3>Turismo Responsável</h3>
+                <p>Escolha operadores de turismo que respeitam a vida marinha. Evite atividades que perturbem animais ou danifiquem recifes de coral.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛒</span>
+                <h3>Compre Conscientemente</h3>
+                <p>Prefira produtos com certificação sustentável, evite cosméticos com microplásticos e escolha marcas comprometidas com a preservação marinha.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💧</span>
+                <h3>Proteja a Qualidade da Água</h3>
+                <p>Use produtos de limpeza biodegradáveis, evite descartar medicamentos no vaso sanitário e mantenha seu carro longe de bueiros.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🗳️</span>
+                <h3>Vote e Participe</h3>
+                <p>Apoie políticos e políticas que priorizem a conservação marinha. Participe de consultas públicas sobre questões ambientais.</p>
+            </div>
         </div>
     </section>
 
@@ -484,20 +684,58 @@
                 <a href="#" class="action-btn">Participe de Limpezas</a>
                 <a href="#" class="action-btn">Assine Petições</a>
                 <a href="#" class="action-btn">Seja Voluntário</a>
+                <a href="#" class="action-btn">Adote uma Praia</a>
+                <a href="#" class="action-btn">Monitore Vida Marinha</a>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h3 style="color: #00ccff; margin-bottom: 1rem;">AquaVida - Preservação Marinha</h3>
-            <p>Trabalhando juntos por oceanos mais limpos e vida marinha protegida.</p>
-            <p style="margin-top: 1rem; opacity: 0.7;">
-                Entre em contato: info@aquavida.org | (11) 9999-9999
-            </p>
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">
-                © 2025 AquaVida. Todos os direitos reservados. Feito com 💙 para nossos oceanos.
-            </p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌊 Preserv Ocean</h4>
+                <p>Organização dedicada à preservação dos oceanos e proteção da vida marinha. Trabalhamos incansavelmente por um futuro sustentável para nossos mares.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📺</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#threats">Ameaças Marinhas</a></li>
+                    <li><a href="#actions">Como Ajudar</a></li>
+                    <li><a href="#">Projetos Ativos</a></li>
+                    <li><a href="#">Relatórios Anuais</a></li>
+                    <li><a href="#">Galeria de Fotos</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#">Guia de Conservação</a></li>
+                    <li><a href="#">Espécies Ameaçadas</a></li>
+                    <li><a href="#">Dados e Estatísticas</a></li>
+                    <li><a href="#">Material Educativo</a></li>
+                    <li><a href="#">Pesquisas Científicas</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="#">Voluntariado</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Preserv Ocean - Preservação Marinha. Todos os direitos reservados.</p>
+            <p style="margin-top: 0.5rem;">Feito com 💙 para nossos oceanos | <a href="#" style="color: #00ccff;">Política de Privacidade</a> | <a href="#" style="color: #00ccff;">Termos de Uso</a></p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">Certificação ISO 14001 | Membro da Rede Global de Conservação Marinha</p>
         </div>
     </footer>
 
