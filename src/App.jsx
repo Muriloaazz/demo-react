@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import SobreNos from './components/SobreNos'
 import ObjetivoProjeto from './components/ObjetivoProjeto'
+import logo from './assets/logo1-Photoroom.png'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -25,7 +26,9 @@ function App() {
 
       <header>
         <nav>
-          <div className="logo">🌊 Preserv Ocean</div>
+          <div className="logo">
+            <img src={logo} alt="Preserv Ocean" style={{height: '40px'}} />
+          </div>
           <ul className="nav-links">
             <li><a href="#home" onClick={() => scrollToSection('home')}>Início</a></li>
             <li><a href="#sobre-nos" onClick={() => scrollToSection('sobre-nos')}>Sobre Nós</a></li>
@@ -99,7 +102,7 @@ function App() {
       </section>
 
       <footer id="contact">
-        <div style={{maxWidth: '1200px', margin: '0 auto'}}>
+        <div style={{maxWidth: '1400px', margin: '0 auto'}}>
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '3rem'}}>
             <div>
               <h3 style={{color: '#00ccff', marginBottom: '1rem'}}>🌊 Preserv Ocean</h3>
