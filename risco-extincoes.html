@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risco de Extinções - Preserv Ocean</title>
+    <link rel="icon" type="image/jpeg" href="./src/assets/logocerta11.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                #001122 0%, 
+                #003366 25%, 
+                #004488 50%, 
+                #0066aa 75%, 
+                #0088cc 100%);
+            z-index: -2;
+        }
+
+        .waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .wave {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"></path></svg>');
+            position: absolute;
+            width: 100%;
+            height: 120px;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            top: 20px;
+            animation: wave 15s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            top: 40px;
+            animation: wave 12s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 17, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: -3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #00ccff;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-section {
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff4444;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .species-section {
+            margin-bottom: 4rem;
+        }
+
+        .species-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ff4444;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .species-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .species-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .species-card h3 {
+            color: #ff4444;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .extinction-level {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .critically-endangered {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+
+        .endangered {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+            border: 1px solid #ffa500;
+        }
+
+        .vulnerable {
+            background: rgba(255, 255, 0, 0.2);
+            color: #ffff00;
+            border: 1px solid #ffff00;
+        }
+
+        .causes-section {
+            background: rgba(0, 136, 204, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(0, 136, 204, 0.3);
+        }
+
+        .causes-section h2 {
+            color: #00ccff;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cause-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .cause-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cause-card h3 {
+            color: #00ccff;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .species-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./src/assets/logocerta11.jpg" alt="Preserv Ocean">
+                Preserv Ocean
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#threats">Ameaças</a></li>
+                <li><a href="index.html#actions">Ações</a></li>
+                <li><a href="risco-extincoes.html">Risco de extinções</a></li>
+                <li><a href="loading.html?page=justificativa.html">Justificativa do Projeto</a></li>
+                <li><a href="loading.html?page=objetivo.html">Objetivo do Projeto</a></li>
+                <li><a href="loading.html?page=tipos-animais.html">Tipos de animais marinhos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="species-section">
+            <h2>Animais Marinhos Ameaçados</h2>
+            <div class="species-grid">
+                <div class="species-card">
+                    <img src="./src/assets/imagem46.jpg" alt="Tartaruga-de-pente" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Tartaruga-de-pente</h3>
+                    <span class="extinction-level critically-endangered">Criticamente Ameaçada</span>
+                    <p>Conhecida por seu casco distintivo com placas sobrepostas. Ameaçada pela caça ilegal por seu casco valioso, perda de habitat de nidificação e poluição marinha.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem47.jpg" alt="Vaquita" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Vaquita</h3>
+                    <span class="extinction-level critically-endangered">Criticamente Ameaçada</span>
+                    <p>A menor e mais ameaçada espécie de cetáceo do mundo. Restam menos de 30 indivíduos no Golfo da Califórnia. Principal ameaça: emaranhamento em redes de pesca.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem48.jpg" alt="Tubarão-baleia" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Tubarão-baleia</h3>
+                    <span class="extinction-level endangered">Ameaçado</span>
+                    <p>O maior peixe do mundo, podendo atingir 12 metros. Ameaçado pela pesca comercial, colisões com embarcações e degradação de seus habitats de alimentação.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem49.jpg" alt="Tubarão-martelo-panã" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Tubarão-martelo-panã</h3>
+                    <span class="extinction-level critically-endangered">Criticamente Ameaçado</span>
+                    <p>Reconhecido por sua cabeça em formato de martelo. População reduziu drasticamente devido à pesca excessiva por suas barbatanas e carne.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem51.jpg" alt="Baleia-azul" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Baleia-azul</h3>
+                    <span class="extinction-level endangered">Ameaçada</span>
+                    <p>O maior animal que já existiu na Terra. Após quase extinção pela caça, ainda enfrenta ameaças como colisões com navios, poluição sonora e mudanças climáticas.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem52.jpg" alt="Foca-monge-do-mediterrâneo" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Foca-monge-do-mediterrâneo</h3>
+                    <span class="extinction-level critically-endangered">Criticamente Ameaçada</span>
+                    <p>Uma das focas mais raras do mundo, com menos de 700 indivíduos. Ameaçada pela perturbação humana, pesca e perda de habitat costeiro.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem52.jpg" alt="Tartaruga-verde" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Tartaruga-verde</h3>
+                    <span class="extinction-level endangered">Ameaçada</span>
+                    <p>Importante para ecossistemas marinhos, mantendo pradarias de algas saudáveis. Ameaçada por pesca acidental, poluição plástica e perda de praias de nidificação.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem53.jpg" alt="Golfinho-corcunda-do-atlântico" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Golfinho-corcunda-do-atlântico</h3>
+                    <span class="extinction-level vulnerable">Vulnerável</span>
+                    <p>Espécie endêmica do Atlântico Sul. Ameaçado pela pesca acidental, poluição química, tráfego marítimo e degradação de habitats costeiros.</p>
+                </div>
+                
+                <div class="species-card">
+                    <img src="./src/assets/imagem54.jpg" alt="Enguia" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <h3>Enguia</h3>
+                    <span class="extinction-level critically-endangered">Criticamente Ameaçada</span>
+                    <p>Peixe migratório com ciclo de vida complexo entre água doce e salgada. Ameaçada por barragens que bloqueiam migração, pesca excessiva, poluição e mudanças climáticas.</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="causes-section">
+            <h2>Principais Causas das Extinções</h2>
+            <div class="causes-grid">
+                <div class="cause-card">
+                    <span class="cause-icon">🎣</span>
+                    <h3>Sobrepesca</h3>
+                    <p>Exploração excessiva dos recursos pesqueiros, levando ao colapso de populações inteiras de peixes.</p>
+                </div>
+                
+                <div class="cause-card">
+                    <span class="cause-icon">🌡️</span>
+                    <h3>Mudanças Climáticas</h3>
+                    <p>Aquecimento e acidificação dos oceanos alteram habitats e cadeias alimentares marinhas.</p>
+                </div>
+                
+                <div class="cause-card">
+                    <span class="cause-icon">🏭</span>
+                    <h3>Poluição</h3>
+                    <p>Plásticos, químicos tóxicos e derramamentos de óleo contaminam o ambiente marinho.</p>
+                </div>
+                
+                <div class="cause-card">
+                    <span class="cause-icon">🏗️</span>
+                    <h3>Destruição de Habitats</h3>
+                    <p>Desenvolvimento costeiro e atividades humanas destroem áreas críticas de reprodução e alimentação.</p>
+                </div>
+                
+                <div class="cause-card">
+                    <span class="cause-icon">🚢</span>
+                    <h3>Tráfego Marítimo</h3>
+                    <p>Colisões com navios e poluição sonora afetam especialmente mamíferos marinhos.</p>
+                </div>
+                
+                <div class="cause-card">
+                    <span class="cause-icon">🎯</span>
+                    <h3>Espécies Invasoras</h3>
+                    <p>Introdução de espécies não-nativas que competem com espécies locais por recursos.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
