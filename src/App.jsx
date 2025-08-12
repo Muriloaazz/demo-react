@@ -29,6 +29,7 @@ function App() {
             <li><a href="#home" onClick={() => scrollToSection('home')}>Início</a></li>
             <li><a href="#sobre-nos" onClick={() => scrollToSection('sobre-nos')}>Sobre Nós</a></li>
             <li><a href="#objetivo-projeto" onClick={() => scrollToSection('objetivo-projeto')}>Objetivo do Projeto</a></li>
+            <li><a href="#actions" className="donate-btn" onClick={() => scrollToSection('actions')}>DOE</a></li>
           </ul>
         </nav>
       </header>
