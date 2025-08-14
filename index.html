@@ -270,6 +270,22 @@
             display: none !important;
         }
 
+        .back-arrow {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 1.2rem;
+            color: #00ccff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
         /* Botão LOGIN especial */
         .login-btn {
             background: linear-gradient(45deg, #4a90e2, #357abd) !important;
@@ -1021,7 +1037,7 @@
         </div>
     </section>
 
-
+    <a href="login-page.html" class="back-arrow">←</a>
 
     <script>
         // Animação de scroll suave
