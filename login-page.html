@@ -16,7 +16,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #001a2e 0%, #003366 50%, #004d7a 100%);
             min-height: 100vh;
-            overflow: hidden;
             position: relative;
         }
 
@@ -163,7 +162,7 @@
 
         .bubble {
             position: absolute;
-            background: rgba(0, 204, 255, 0.1);
+            background: rgba(0, 150, 255, 0.4);
             border-radius: 50%;
             animation: float 8s infinite ease-in-out;
         }
@@ -192,6 +191,62 @@
             animation-delay: 4s;
         }
 
+        .bubble:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 30%;
+            right: 25%;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 35px;
+            height: 35px;
+            top: 70%;
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        .bubble:nth-child(6) {
+            width: 70px;
+            height: 70px;
+            bottom: 40%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .bubble:nth-child(7) {
+            width: 45px;
+            height: 45px;
+            top: 15%;
+            left: 75%;
+            animation-delay: 2.5s;
+        }
+
+        .bubble:nth-child(8) {
+            width: 55px;
+            height: 55px;
+            bottom: 60%;
+            left: 40%;
+            animation-delay: 6s;
+        }
+
+        .bubble:nth-child(9) {
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            right: 40%;
+            animation-delay: 4.5s;
+        }
+
+        .bubble:nth-child(10) {
+            width: 65px;
+            height: 65px;
+            bottom: 10%;
+            right: 60%;
+            animation-delay: 7s;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
             50% { transform: translateY(-20px) rotate(180deg); opacity: 0.7; }
@@ -210,6 +265,161 @@
             height: calc(100vh - 140px);
             object-fit: cover;
         }
+
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #00ccff;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            margin-top: 150px;
+            padding: 2rem;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 500px;
+            height: 375px;
+            object-fit: cover;
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+
+
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 800px;
+            background: linear-gradient(135deg, #ffffff, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            line-height: 1.6;
+            max-width: 600px;
+            background: linear-gradient(135deg, #ffffff, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-button {
+            margin-top: 1rem;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc, #006699, #004466, #00ccff);
+            background-size: 400% 400%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 204, 255, 0.4);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-button-secondary {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .hero-button-secondary::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc, #006699, #004466, #00ccff);
+            background-size: 400% 400%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .hero-button-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 204, 255, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -222,9 +432,9 @@
                 Preserv Ocean
             </div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
                 <li><a href="#" class="donate-btn">DOE</a></li>
             </ul>
         </nav>
@@ -234,10 +444,49 @@
         <div class="bubble"></div>
         <div class="bubble"></div>
         <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
 
-    <div class="main-image">
-        <img src="./src/assets/imagem55.jpeg" alt="Preserv Ocean">
+    <div class="hero-text">
+        <div class="hero-content">
+            <h1>Protegendo</h1>
+            <h1>Nossos</h1>
+            <h1>Oceanos para</h1>
+            <h1>as Futuras Gerações</h1>
+            <p class="hero-subtitle">Dedicados à pesquisa, conservação e proteção da biodiversidade marinha através de ciência de ponta, educação ambiental e parcerias sustentáveis</p>
+            <a href="nossa-missao.html" class="hero-button-secondary">Nossa Missão</a>
+            <a href="home.html" class="hero-button">Saiba Mais</a>
+        </div>
+        <div class="hero-image">
+            <img src="./src/assets/imagem56.png" alt="Oceano">
+        </div>
     </div>
+
+    <section id="home" class="section">
+        <div class="container">
+            <h2>Home</h2>
+            <p>Bem-vindos ao Preserv Ocean - dedicado à preservação dos oceanos e proteção da vida marinha.</p>
+        </div>
+    </section>
+
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2>Sobre</h2>
+            <p>Nossa missão é conscientizar sobre a importância da preservação marinha e promover ações sustentáveis para proteger nossos oceanos.</p>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco: contato@preservocean.com.br | Tel: +55 (11) 937728223</p>
+        </div>
+    </section>
 </body>
 </html>
