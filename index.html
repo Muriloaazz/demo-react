@@ -155,9 +155,10 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 2rem;
+            gap: 3rem;
         }
 
         .logo {
@@ -166,7 +167,6 @@
             color: #fff;
             display: flex;
             align-items: center;
-            margin-left: -3rem;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -234,6 +234,62 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Botão DOE especial */
+        .donate-btn {
+            background: linear-gradient(45deg, #ff6b35, #f7931e) !important;
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #f7931e, #ff6b35) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .donate-btn::after {
+            display: none !important;
+        }
+
+        /* Botão LOGIN especial */
+        .login-btn {
+            background: linear-gradient(45deg, #4a90e2, #357abd) !important;
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3) !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(45deg, #357abd, #4a90e2) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .login-btn::after {
+            display: none !important;
         }
 
         /* Hero Section */
@@ -695,6 +751,11 @@
                 display: none;
             }
             
+            .donate-btn {
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.8rem !important;
+            }
+            
             .cards-container {
                 grid-template-columns: 1fr;
             }
@@ -729,6 +790,8 @@
                 <li><a href="loading.html?page=justificativa.html">Justificativa do Projeto</a></li>
                 <li><a href="loading.html?page=objetivo.html">Objetivo do Projeto</a></li>
                 <li><a href="loading.html?page=tipos-animais.html">Tipos de animais marinhos</a></li>
+                <li><a href="login-page.html" class="login-btn">LOGIN</a></li>
+                <li><a href="#" class="donate-btn">DOE</a></li>
             </ul>
         </nav>
     </header>
