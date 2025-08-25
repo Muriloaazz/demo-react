@@ -1,32 +1,16 @@
-import { useState } from 'react'
 import './App.css'
 import SobreNos from './components/SobreNos'
 import ObjetivoProjeto from './components/ObjetivoProjeto'
-import Login from './components/Login'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('home')
-  const [showLogin, setShowLogin] = useState(false)
-  const [user, setUser] = useState(null)
-
   const scrollToSection = (sectionId) => {
-    setActiveSection(sectionId)
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
-  const handleLogin = (credentials) => {
-    // Aqui você pode implementar a lógica de autenticação
-    console.log('Login:', credentials)
-    setUser({ email: credentials.email })
-    setShowLogin(false)
-  }
 
-  const handleLogout = () => {
-    setUser(null)
-  }
 
   return (
     <div className="App">
@@ -44,11 +28,7 @@ function App() {
             <li><a href="#sobre-nos" onClick={() => scrollToSection('sobre-nos')}>Sobre Nós</a></li>
             <li><a href="#objetivo-projeto" onClick={() => scrollToSection('objetivo-projeto')}>Objetivo do Projeto</a></li>
             <li><a href="#actions" className="donate-btn" onClick={() => scrollToSection('actions')}>DOE</a></li>
-            {user ? (
-              <li><a href="#" onClick={handleLogout}>Sair ({user.email})</a></li>
-            ) : (
-              <li><a href="#" onClick={() => setShowLogin(true)}>Login</a></li>
-            )}
+
           </ul>
         </nav>
       </header>
@@ -65,7 +45,7 @@ function App() {
       
       <ObjetivoProjeto />
 
-      <section id="threats" className="section fade-in">
+      <section id="threats" className="section">
         <h2>Principais Ameaças</h2>
         <div className="cards-container">
           <div className="card">
@@ -86,7 +66,7 @@ function App() {
         </div>
       </section>
 
-      <section id="actions" className="section fade-in">
+      <section id="actions" className="section">
         <h2>Como Você Pode Ajudar</h2>
         
         <div className="action-section">
@@ -160,13 +140,7 @@ function App() {
           </div>
         </div>
       </footer>
-      
-      {showLogin && (
-        <Login 
-          onClose={() => setShowLogin(false)}
-          onLogin={handleLogin}
-        />
-      )}
+
     </div>
   )
 }
