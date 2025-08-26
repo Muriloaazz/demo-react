@@ -421,34 +421,147 @@
             box-shadow: 0 10px 30px rgba(0, 204, 255, 0.4);
         }
 
-        .back-arrow {
-            position: fixed;
-            top: 50%;
-            left: 2rem;
-            transform: translateY(-50%);
+        .contact-section {
+            padding: 4rem 2rem;
             background: rgba(0, 26, 46, 0.9);
+            margin: 2rem;
+            border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(0, 204, 255, 0.3);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00ccff;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            z-index: 1001;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .back-arrow:hover {
-            background: rgba(0, 204, 255, 0.2);
-            border-color: #00ccff;
-            transform: translateY(-50%) translateX(-5px);
-            box-shadow: 0 8px 25px rgba(0, 204, 255, 0.4);
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
+
+        .contact-info h2 {
+            color: #00ccff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 230px;
+            width: 230px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 204, 255, 0.3);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .contact-card h4 {
+            color: #00ccff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 600px;
+            min-height: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00ccff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ccff;
+            box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 204, 255, 0.4);
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -482,9 +595,7 @@
         <div class="bubble"></div>
     </div>
 
-    <a href="auth.html" class="back-arrow" title="Voltar para Login">
-        ←
-    </a>
+
 
     <div class="hero-text">
         <div class="hero-content">
@@ -501,25 +612,60 @@
         </div>
     </div>
 
-    <section id="home" class="section">
-        <div class="container">
-            <h2>Home</h2>
-            <p>Bem-vindos ao Preserv Ocean - dedicado à preservação dos oceanos e proteção da vida marinha.</p>
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Estamos aqui para ajudar na preservação dos oceanos. Entre em contato conosco para saber mais sobre nossos projetos ou como você pode contribuir.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-card">
+                        <span class="contact-card-icon">📧</span>
+                        <h4>Email</h4>
+                        <p>@preservocean.com.br</p>
+                    </div>
+                    <div class="contact-card">
+                        <span class="contact-card-icon">📱</span>
+                        <h4>Telefone</h4>
+                        <p>+55 (11) 937728223</p>
+                    </div>
+                    <div class="contact-card">
+                        <span class="contact-card-icon">📍</span>
+                        <h4>Localização</h4>
+                        <p>São Paulo, Brasil</p>
+                    </div>
+                    <div class="contact-card">
+                        <span class="contact-card-icon">🌊</span>
+                        <h4>Redes Sociais</h4>
+                        <p>@preservocean</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <section id="sobre" class="section">
-        <div class="container">
-            <h2>Sobre</h2>
-            <p>Nossa missão é conscientizar sobre a importância da preservação marinha e promover ações sustentáveis para proteger nossos oceanos.</p>
-        </div>
-    </section>
-
-    <section id="contato" class="section">
-        <div class="container">
-            <h2>Contato</h2>
-            <p>Entre em contato conosco: contato@preservocean.com.br | Tel: +55 (11) 937728223</p>
-        </div>
-    </section>
 </body>
 </html>
