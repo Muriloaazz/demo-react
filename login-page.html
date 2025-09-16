@@ -616,7 +616,9 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
+                <li><span id="user-name" style="color: #00ccff; margin-right: 1rem;"></span></li>
                 <li><a href="#" class="donate-btn">DOE</a></li>
+                <li><a href="#" onclick="logout()" style="color: #ff6b6b;">Sair</a></li>
             </ul>
         </nav>
     </header>
@@ -708,5 +710,26 @@
         </div>
     </section>
 
+    <script>
+        // Verificar autenticação
+        window.onload = function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'auth.html';
+                return;
+            }
+            
+            const user = JSON.parse(currentUser);
+            document.getElementById('user-name').textContent = `Olá, ${user.name.split(' ')[0]}`;
+        };
+
+        // Função de logout
+        function logout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'auth.html';
+            }
+        }
+    </script>
 </body>
 </html>
