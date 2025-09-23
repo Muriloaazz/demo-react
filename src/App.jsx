@@ -1,6 +1,7 @@
 import './App.css'
 import SobreNos from './components/SobreNos'
 import ObjetivoProjeto from './components/ObjetivoProjeto'
+import Auth from './Auth'
 
 function App() {
   const scrollToSection = (sectionId) => {
