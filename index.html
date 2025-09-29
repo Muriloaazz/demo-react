@@ -1,14 +1,1170 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preserv Ocean</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preserv Ocean </title>
+     <link rel="icon" type="image/jpeg" href="./src/assets/logocerta11.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #001a2e 0%, #003366 50%, #004d7a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animação de bolhas de fundo */
+        .bubble {
+            position: absolute;
+            background: rgba(64, 224, 255, 0.1);
+            border-radius: 50%;
+            animation: bubble-float 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes bubble-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.7; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 30px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preserv Ocean - Preservação da Vida Marinha</title>
+    <link rel="icon" type="image/jpeg" href="./src/assets/logocerta11.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background animado */
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                #001122 0%, 
+                #003366 25%, 
+                #004488 50%, 
+                #0066aa 75%, 
+                #0088cc 100%);
+            z-index: -2;
+        }
+
+        .waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .wave {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"></path></svg>');
+            position: absolute;
+            width: 100%;
+            height: 120px;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            top: 20px;
+            animation: wave 15s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            top: 40px;
+            animation: wave 12s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 17, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #00ccff;
+            transform: translateY(-2px);
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+            margin-right: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 204, 255, 0.3);
+            background: transparent;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #00ccff;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Botão DOE especial */
+        .donate-btn {
+            background: linear-gradient(45deg, #dc3545, #c82333) !important;
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3) !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-decoration: none !important;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #c82333, #dc3545) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .donate-btn::after {
+            display: none !important;
+        }
+
+        .back-arrow {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 1.2rem;
+            color: #00ccff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Botão LOGIN especial */
+        .login-btn {
+            background: linear-gradient(45deg, #4a90e2, #357abd) !important;
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3) !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(45deg, #357abd, #4a90e2) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .login-btn::after {
+            display: none !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 0;
+            padding-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #00ccff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 204, 255, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 204, 255, 0.3);
+            margin-bottom: 50px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 204, 255, 0.5);
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 1rem auto 2rem;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+        }
+
+        .top-video-section {
+            padding-top: 80px;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .top-video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 40%;
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .top-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+
+
+
+
+        /* Sections */
+        .section {
+            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00ccff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ccff;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 204, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ccff;
+            display: block;
+        }
+
+        .action-section {
+            background: rgba(0, 136, 204, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            border: 1px solid rgba(0, 136, 204, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 204, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            position: relative;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+            border-top: 2px solid rgba(0, 204, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .footer-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .footer-video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-3d-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 17, 34, 0.95) 0%,
+                rgba(0, 51, 102, 0.9) 25%,
+                rgba(0, 68, 136, 0.85) 50%,
+                rgba(0, 102, 170, 0.9) 75%,
+                rgba(0, 17, 34, 0.95) 100%
+            );
+            z-index: -1;
+        }
+
+        .footer-3d-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 136, 204, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(64, 224, 255, 0.05) 0%, transparent 70%);
+            animation: float3d 8s ease-in-out infinite;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .footer-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 204, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 12s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            color: #00ccff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 204, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00ccff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 204, 255, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 204, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter {
+            background: rgba(0, 204, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .newsletter input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter button {
+            background: linear-gradient(45deg, #00ccff, #0088cc);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .donate-btn {
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="nav-center">
+                <div class="logo">
+                    <img src="./src/assets/logocerta11.jpg" alt="Preserv Ocean">
+                    Preserv Ocean
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#actions">Ações</a></li>
+                    <li><a href="risco-extincoes.html">Risco de extinções</a></li>
+
+                    <li><a href="tipos-animais.html">Tipos de animais marinhos</a></li>
+                </ul>
+            </div>
+            <a href="#" class="donate-btn">DOE</a>
+        </nav>
+    </header>
+
+
+    
+
+    <section class="top-video-section">
+        <div class="top-video-container">
+            <iframe src="https://www.youtube.com/embed/AlGVqAXqBLw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Preserve Nossos Oceanos</h1>
+            <p>Juntos podemos proteger a vida marinha e garantir um futuro sustentável para as próximas gerações</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/-UmOPQRpRIE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="vida-marinha" class="section fade-in" style="padding-top: 8rem;">
+        <h2>O que é a Vida Marinha?</h2>
+        <div class="action-section">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left;">
+                A vida marinha engloba todos os organismos que habitam os oceanos, mares e ambientes aquáticos salinos. 
+                Desde microscópicos plânctons até majestosas baleias, cada forma de vida desempenha um papel fundamental 
+                no equilíbrio dos ecossistemas oceânicos.
+            </p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <img src="./src/assets/imagem1.jpg" alt="Mamíferos Marinhos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Mamíferos</h3>
+                <p>Baleias, golfinhos, focas e dugongos são mamíferos que evoluíram para viver nos oceanos, sendo essenciais para o equilíbrio marinho.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem2.jpg" alt="Peixes" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Peixes</h3>
+                <p>Mais de 34.000 espécies de peixes habitam os oceanos, desde pequenos peixes coloridos até grandes predadores como tubarões e raias.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem3.jpg" alt="Moluscos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Moluscos</h3>
+                <p>Polvos, lulas, caracois marinhos e ostras formam este grupo diverso, com conchas ou corpos moles adaptados à vida aquática.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem4.jpg" alt="Crustáceos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Crustáceos</h3>
+                <p>Caranguejos, lagostas, camarões e cracas possuem exoesqueleto rígido e são fundamentais na cadeia alimentar marinha.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem5.jpg" alt="Répteis" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Répteis</h3>
+                <p>Tartarugas marinhas, serpentes marinhas e iguanas marinhas são répteis adaptados à vida nos oceanos e costas.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem6.jpg" alt="Esponjas" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Esponjas</h3>
+                <p>Organismos multicelulares primitivos que filtram água do mar, sendo fundamentais para a limpeza e oxigenação dos oceanos.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem7.jpg" alt="Vermes Marinhos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Vermes Marinhos</h3>
+                <p>Políquetas e outros vermes marinhos vivem no sedimento oceânico, reciclando nutrientes e servindo de alimento para outros animais.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem8.jpg" alt="Rotíferos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Rotíferos</h3>
+                <p>Microorganismos aquáticos com estruturas ciliadas rotativas, essenciais no plâncton e na base da cadeia alimentar marinha.</p>
+            </div>
+            <div class="card">
+                <img src="./src/assets/imagem9.jpg" alt="Equinodermos" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                <h3>Equinodermos</h3>
+                <p>Estrelas-do-mar, ouriços-do-mar e pepinos-do-mar possuem esqueleto interno calcificado e são importantes predadores e decompositores.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section fade-in">
+        <h2>Por Que Preservar?</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            Os oceanos cobrem 71% da superfície terrestre e abrigam uma biodiversidade incrível. 
+            Eles regulam o clima, produzem oxigênio e sustentam bilhões de vidas.
+        </p>
+        
+        <div class="stats-container">
+            <div class="stat">
+                <span class="stat-number">70%</span>
+                <span>do oxigênio que respiramos vem dos oceanos</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">3 bilhões</span>
+                <span>de pessoas dependem dos oceanos para sobreviver</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">80%</span>
+                <span>da vida na Terra está nos oceanos</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">8 milhões</span>
+                <span>de toneladas de plástico chegam aos oceanos anualmente</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="threats" class="section fade-in">
+        <h2>Principais Ameaças</h2>
+        <div class="cards-container">
+            <div class="card">
+                <span class="card-icon">🏭</span>
+                <h3>Poluição</h3>
+                <p>Plásticos, químicos e resíduos industriais contaminam os oceanos, afetando toda a cadeia alimentar marinha e causando a morte de milhões de animais marinhos anualmente.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌡️</span>
+                <h3>Aquecimento Global</h3>
+                <p>O aumento da temperatura oceânica causa branqueamento de corais, altera correntes marítimas e força espécies a migrar, destruindo ecossistemas inteiros.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎣</span>
+                <h3>Pesca Excessiva</h3>
+                <p>A exploração descontrolada dos recursos pesqueiros leva ao colapso de populações de peixes, desequilibrando todo o ecossistema marinho.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🏗️</span>
+                <h3>Destruição de Habitats</h3>
+                <p>Desenvolvimento costeiro, mineração submarina e atividades humanas destroem recifes de coral, manguezais e outros habitats críticos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">⚗️</span>
+                <h3>Acidificação</h3>
+                <p>O excesso de CO2 na atmosfera torna os oceanos mais ácidos, dificultando a formação de conchas e esqueletos de organismos marinhos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛢️</span>
+                <h3>Derramamentos de Óleo</h3>
+                <p>Acidentes com petroleiros e vazamentos causam danos devastadores à vida marinha, contaminando águas e praias por décadas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="actions" class="section fade-in">
+        <h2>Como Você Pode Ajudar</h2>
+        
+        <div class="action-section">
+            <h3 style="color: #00ccff; margin-bottom: 1rem;">Ações Individuais</h3>
+            <p>Pequenas mudanças em nosso dia a dia podem fazer uma grande diferença para os oceanos.</p>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="showTip('plastic')">Reduza o Plástico</button>
+                <button class="action-btn" onclick="showTip('consume')">Consuma Conscientemente</button>
+                <button class="action-btn" onclick="showTip('energy')">Economize Energia</button>
+                <button class="action-btn" onclick="showTip('beach')">Limpe as Praias</button>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <span class="card-icon">♻️</span>
+                <h3>Recicle e Reutilize</h3>
+                <p>Evite produtos de uso único, recicle corretamente e escolha alternativas sustentáveis. Cada item reciclado é um a menos nos oceanos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🐟</span>
+                <h3>Escolha Frutos do Mar Sustentáveis</h3>
+                <p>Prefira peixes de pesca sustentável e evite espécies ameaçadas. Consulte guias de consumo responsável antes de comprar.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🚗</span>
+                <h3>Reduza Sua Pegada de Carbono</h3>
+                <p>Use transporte público, bicicleta ou caminhe. Menos CO2 na atmosfera significa oceanos menos ácidos e mais saudáveis.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📚</span>
+                <h3>Eduque e Compartilhe</h3>
+                <p>Compartilhe conhecimento sobre conservação marinha. Quanto mais pessoas souberem, maior será o impacto positivo.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌱</span>
+                <h3>Apoie Organizações</h3>
+                <p>Doe ou seja voluntário em ONGs de conservação marinha. Seu apoio financeiro ou tempo ajuda a financiar pesquisas e projetos de proteção.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🏖️</span>
+                <h3>Turismo Responsável</h3>
+                <p>Escolha operadores de turismo que respeitam a vida marinha. Evite atividades que perturbem animais ou danifiquem recifes de coral.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛒</span>
+                <h3>Compre Conscientemente</h3>
+                <p>Prefira produtos com certificação sustentável, evite cosméticos com microplásticos e escolha marcas comprometidas com a preservação marinha.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💧</span>
+                <h3>Proteja a Qualidade da Água</h3>
+                <p>Use produtos de limpeza biodegradáveis, evite descartar medicamentos no vaso sanitário e mantenha seu carro longe de bueiros.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🗳️</span>
+                <h3>Vote e Participe</h3>
+                <p>Apoie políticos e políticas que priorizem a conservação marinha. Participe de consultas públicas sobre questões ambientais.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in">
+        <div class="action-section">
+            <h2 style="margin-bottom: 1rem;">Faça a Diferença Agora</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Cada ação conta. Juntos, podemos reverter os danos e criar um futuro onde oceanos e vida marinha prosperem.
+            </p>
+            <div class="action-buttons">
+                <a href="#" class="action-btn">Doe para ONGs Marinhas</a>
+                <a href="#" class="action-btn">Participe de Limpezas</a>
+                <a href="#" class="action-btn">Assine Petições</a>
+                <a href="#" class="action-btn">Seja Voluntário</a>
+                <a href="#" class="action-btn">Adote uma Praia</a>
+                <a href="#" class="action-btn">Monitore Vida Marinha</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="login-page.html" class="back-arrow">←</a>
+
+    <script>
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação fade-in ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header transparente ao scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 17, 34, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 17, 34, 0.95)';
+            }
+        });
+
+        // Função para mostrar dicas
+        function showTip(type) {
+            const tips = {
+                plastic: 'Use sacolas reutilizáveis, garrafas de água reutilizáveis e evite canudos plásticos. Pequenas mudanças fazem grande diferença!',
+                consume: 'Escolha produtos com menos embalagem, prefira marcas sustentáveis e evite fast fashion. Consuma apenas o necessário.',
+                energy: 'Use lâmpadas LED, desligue aparelhos da tomada e considere energia renovável. Menos energia = menos CO2 nos oceanos.',
+                beach: 'Participe de mutirões de limpeza, recolha lixo quando visitar praias e nunca deixe resíduos para trás.'
+            };
+            
+            alert(tips[type]);
+        }
+
+        // Efeito de contagem nos números
+        function animateNumbers() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = stat.textContent;
+                const isPercentage = target.includes('%');
+                const number = parseInt(target.replace(/[^0-9]/g, ''));
+                
+                let current = 0;
+                const increment = number / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        current = number;
+                        clearInterval(timer);
+                    }
+                    
+                    if (isPercentage) {
+                        stat.textContent = Math.floor(current) + '%';
+                    } else if (number >= 1000000) {
+                        stat.textContent = (current / 1000000).toFixed(1) + ' milhões';
+                    } else if (number >= 1000) {
+                        stat.textContent = (current / 1000000).toFixed(1) + ' bilhões';
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 50);
+            });
+        }
+
+        // Iniciar animação dos números quando a seção for visível
+        const statsSection = document.querySelector('.stats-container');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statsObserver.observe(statsSection);
+        }
+
+        // Criar partículas animadas no footer
+        function createFooterParticles() {
+            const particlesContainer = document.getElementById('footerParticles');
+            if (!particlesContainer) return;
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Criar bolhas animadas
+        function createBubbles() {
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.top = Math.random() * 100 + '%';
+                bubble.style.width = (Math.random() * 60 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = Math.random() * 6 + 's';
+                bubble.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.body.appendChild(bubble);
+            }
+        }
+
+        // Inicializar
+        createBubbles();
+        createFooterParticles();
+    </script>
+</body>
 </html>

@@ -1,7 +1,4 @@
-import './App.css'
-import SobreNos from './components/SobreNos'
-import ObjetivoProjeto from './components/ObjetivoProjeto'
-import Auth from './Auth'
+
 
 function App() {
   const scrollToSection = (sectionId) => {
@@ -27,7 +24,7 @@ function App() {
           <ul className="nav-links">
             <li><a href="#home" onClick={() => scrollToSection('home')}>Início</a></li>
             <li><a href="#sobre-nos" onClick={() => scrollToSection('sobre-nos')}>Sobre Nós</a></li>
-            <li><a href="#objetivo-projeto" onClick={() => scrollToSection('objetivo-projeto')}>Objetivo do Projeto</a></li>
+
             <li><a href="#actions" className="donate-btn" onClick={() => scrollToSection('actions')}>DOE</a></li>
 
           </ul>
@@ -44,7 +41,7 @@ function App() {
 
       <SobreNos />
       
-      <ObjetivoProjeto />
+
 
       <section id="threats" className="section">
         <h2>Principais Ameaças</h2>
