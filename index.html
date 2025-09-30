@@ -105,12 +105,21 @@
         }
 
         .donate-btn {
-            background: linear-gradient(45deg, #dc3545, #c82333) !important;
+            background: linear-gradient(45deg, #ff6b35, #f7931e) !important;
             color: white !important;
-            padding: 0.6rem 1.2rem !important;
-            border-radius: 8px !important;
+            padding: 0.7rem 1.3rem !important;
+            border-radius: 20px !important;
             font-weight: bold !important;
             text-decoration: none !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5) !important;
         }
 
         .section {
@@ -220,9 +229,23 @@
         <div class="wave"></div>
     </div>
 
-    
+    <header>
+        <nav>
+            
+            <div class="nav-center">
+                <ul class="nav-links">
+                   
+                    <li><a href="risco-extincoes.html">Risco de extinções</a></li>
+                    <li><a href="tipos-animais.html">Tipos de animais marinhos</a></li>
+                    <li><a href="aquarios.html">Aquários</a></li>
+                </ul>
+            </div>
+            <a href="#" class="donate-btn">DOE</a>
+            <a href="login.html" style="color: #00ccff; text-decoration: none; font-weight: 500;">Login</a>
+        </nav>
+    </header>
 
-    <section id="vida-marinha" class="section fade-in" style="padding-top: 2rem;">
+    <section id="vida-marinha" class="section fade-in" style="padding-top: 8rem;">
         <h2>O que é a Vida Marinha?</h2>
         <div class="action-section">
             <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: left;">
