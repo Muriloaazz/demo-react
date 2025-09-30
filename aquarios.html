@@ -27,12 +27,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, 
-                #001122 0%, 
-                #003366 25%, 
-                #004488 50%, 
-                #0066aa 75%, 
-                #0088cc 100%);
+            background: linear-gradient(45deg, #001122 0%, #003366 25%, #004488 50%, #0066aa 75%, #0088cc 100%);
             z-index: -2;
         }
 
@@ -47,21 +42,11 @@
         }
 
         .wave {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"></path></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path></svg>');
             position: absolute;
             width: 100%;
             height: 120px;
             animation: wave 10s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            top: 20px;
-            animation: wave 15s linear infinite reverse;
-        }
-
-        .wave:nth-child(3) {
-            top: 40px;
-            animation: wave 12s linear infinite;
         }
 
         @keyframes wave {
@@ -104,11 +89,6 @@
             object-fit: cover;
         }
 
-        .nav-center {
-            display: flex;
-            align-items: center;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -140,11 +120,9 @@
         }
 
         .section {
-            padding: 5rem 0;
+            padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
         }
 
         .section h1 {
@@ -190,13 +168,6 @@
 
         .state-item:hover {
             background: rgba(0, 204, 255, 0.1);
-            padding-left: 2rem;
-        }
-
-        .state-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
         }
 
         .state-name {
@@ -211,11 +182,7 @@
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
             font-size: 0.9rem;
-        }
-
-        .aquarium-count {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            margin-left: 1rem;
         }
 
         .state-page {
@@ -225,30 +192,6 @@
 
         .state-page.active {
             display: block;
-        }
-
-        .aquarium-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .aquarium-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 204, 255, 0.1);
-        }
-
-        .aquarium-name {
-            color: #00ccff;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .aquarium-location {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
         }
 
         .map-container {
@@ -266,52 +209,6 @@
             border-radius: 10px;
         }
 
-        .aquarium-details {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-
-        .detail-item {
-            margin-bottom: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0, 204, 255, 0.1);
-        }
-
-        .detail-label {
-            color: #00ccff;
-            font-weight: 600;
-            display: inline-block;
-            width: 120px;
-        }
-
-        .info-section {
-            background: rgba(0, 136, 204, 0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-            border: 1px solid rgba(0, 136, 204, 0.3);
-        }
-
-        .info-text {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .info-text h3 {
-            color: #00ccff;
-            font-size: 1.3rem;
-            margin: 1.5rem 0 0.5rem 0;
-        }
-
-        .info-text p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
         .back-arrow {
             position: fixed;
             bottom: 2rem;
@@ -321,13 +218,7 @@
             border: none;
             cursor: pointer;
             font-size: 2rem;
-            transition: all 0.3s ease;
             z-index: 999;
-        }
-
-        .back-arrow:hover {
-            color: #ffffff;
-            transform: translateX(-3px);
         }
     </style>
 </head>
@@ -339,11 +230,22 @@
         <div class="wave"></div>
     </div>
 
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./src/assets/logocerta11.jpg" alt="Preserv Ocean">
+                Preserv Ocean
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="risco-extincoes.html">Risco de extinções</a></li>
+                <li><a href="tipos-animais.html">Tipos de animais marinhos</a></li>
+            </ul>
+            <a href="#" class="donate-btn">DOE</a>
+        </nav>
+    </header>
     
-    
-    <div class="back-arrow" onclick="goBack()" title="Voltar">
-        ←
-    </div>
+    <div class="back-arrow" onclick="goBack()">←</div>
     
     <main class="main-content">
         <section class="section" id="main-section">
@@ -354,29 +256,6 @@
             </div>
 
             <div class="states-list" id="statesList"></div>
-            
-            <div class="info-section">
-                <div class="info-text" style="text-align: center;">
-                    <p style="font-size: 1.5rem; font-weight: 600;">Porque devemos Visitar Aquarios Marinhos?</p>
-                    <div class="info-section">
-                        <div class="info-text">
-                            <p>Os aquários são janelas para o mundo marinho, oferecendo experiências educativas únicas e promovendo a conservação dos oceanos. Estes espaços desempenham um papel fundamental na educação ambiental e na preservação da vida marinha.</p>
-                            
-                            <h3>Educação Marinha</h3>
-                            <p>Nos aquários, você pode aprender sobre espécies marinhas, seus habitats naturais e comportamentos de forma interativa e envolvente. É uma oportunidade única de observar de perto animais que vivem nas profundezas dos oceanos.</p>
-                            
-                            <h3>Conservação e Preservação</h3>
-                            <p>Ao visitar um aquário, você contribui diretamente para programas de preservação e pesquisa científica que protegem os oceanos. Muitos aquários participam de projetos de reprodução de espécies ameaçadas e reabilitação de animais feridos.</p>
-                            
-                            <h3>Experiência Familiar Educativa</h3>
-                            <p>Os aquários proporcionam momentos únicos em família, despertando o interesse das crianças pela vida marinha e criando uma consciência ambiental desde cedo. É diversão e aprendizado combinados.</p>
-                            
-                            <h3>Apoio à Pesquisa Científica</h3>
-                            <p>Sua visita apoia estudos importantes sobre biologia marinha, mudanças climáticas e conservação dos oceanos. Os aquários são centros de pesquisa que contribuem significativamente para o conhecimento científico.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <div id="state-pages"></div>
@@ -384,33 +263,9 @@
 
     <script>
         const states = [
-            { name: 'Acre', code: 'AC', aquarium: 'Aquário Principal do Acre', lat: -9.9754, lng: -67.8249 },
-            { name: 'Alagoas', code: 'AL', aquarium: 'Aquário Principal de Alagoas', lat: -9.6658, lng: -35.7353 },
-            { name: 'Amapá', code: 'AP', aquarium: 'Aquário Principal do Amapá', lat: 0.0389, lng: -51.0664 },
-            { name: 'Amazonas', code: 'AM', aquarium: 'Aquário Principal do Amazonas', lat: -3.1190, lng: -60.0217 },
-            { name: 'Bahia', code: 'BA', aquarium: 'Aquário Principal da Bahia', lat: -12.9714, lng: -38.5014 },
-            { name: 'Ceará', code: 'CE', aquarium: 'Aquário Principal do Ceará', lat: -3.7319, lng: -38.5267 },
-            { name: 'Distrito Federal', code: 'DF', aquarium: 'Aquário Principal de Brasília', lat: -15.8267, lng: -47.9218 },
-            { name: 'Espírito Santo', code: 'ES', aquarium: 'Aquário Principal do Espírito Santo', lat: -20.3155, lng: -40.3128 },
-            { name: 'Goiás', code: 'GO', aquarium: 'Aquário Principal de Goiás', lat: -16.6869, lng: -49.2648 },
-            { name: 'Maranhão', code: 'MA', aquarium: 'Aquário Principal do Maranhão', lat: -2.5387, lng: -44.2825 },
-            { name: 'Mato Grosso', code: 'MT', aquarium: 'Aquário Principal do Mato Grosso', lat: -15.6014, lng: -56.0979 },
-            { name: 'Mato Grosso do Sul', code: 'MS', aquarium: 'Aquário Principal do Mato Grosso do Sul', lat: -20.4697, lng: -54.6201 },
-            { name: 'Minas Gerais', code: 'MG', aquarium: 'Aquário Principal de Minas Gerais', lat: -19.8157, lng: -43.9542 },
-            { name: 'Pará', code: 'PA', aquarium: 'Aquário Principal do Pará', lat: -1.4558, lng: -48.5044 },
-            { name: 'Paraíba', code: 'PB', aquarium: 'Aquário Principal da Paraíba', lat: -7.1195, lng: -34.8450 },
-            { name: 'Paraná', code: 'PR', aquarium: 'Aquário Principal do Paraná', lat: -25.4244, lng: -49.2654 },
-            { name: 'Pernambuco', code: 'PE', aquarium: 'Aquário Principal de Pernambuco', lat: -8.0476, lng: -34.8770 },
-            { name: 'Piauí', code: 'PI', aquarium: 'Aquário Principal do Piauí', lat: -5.0892, lng: -42.8016 },
-            { name: 'Rio de Janeiro', code: 'RJ', aquarium: 'AquaRio - Aquário Marinho do Rio de Janeiro', lat: -22.8951, lng: -43.1828 },
-            { name: 'Rio Grande do Norte', code: 'RN', aquarium: 'Aquário Principal do Rio Grande do Norte', lat: -5.7945, lng: -35.2110 },
-            { name: 'Rio Grande do Sul', code: 'RS', aquarium: 'Aquário Principal do Rio Grande do Sul', lat: -30.0346, lng: -51.2177 },
-            { name: 'Rondônia', code: 'RO', aquarium: 'Aquário Principal de Rondônia', lat: -8.7619, lng: -63.9039 },
-            { name: 'Roraima', code: 'RR', aquarium: 'Aquário Principal de Roraima', lat: 2.8235, lng: -60.6758 },
-            { name: 'Santa Catarina', code: 'SC', aquarium: 'Aquário Principal de Santa Catarina', lat: -27.5954, lng: -48.5480 },
             { name: 'São Paulo', code: 'SP', aquarium: 'Aquário de São Paulo', lat: -23.5505, lng: -46.6333 },
-            { name: 'Sergipe', code: 'SE', aquarium: 'Aquário Principal de Sergipe', lat: -10.9472, lng: -37.0731 },
-            { name: 'Tocantins', code: 'TO', aquarium: 'Aquário Principal do Tocantins', lat: -10.1753, lng: -48.2982 }
+            { name: 'Rio de Janeiro', code: 'RJ', aquarium: 'AquaRio', lat: -22.8951, lng: -43.1828 },
+            { name: 'Bahia', code: 'BA', aquarium: 'Aquário da Bahia', lat: -12.9714, lng: -38.5014 }
         ];
 
         function initMap(stateCode) {
@@ -418,25 +273,19 @@
             if (!state) return;
             
             const map = L.map(`map-${stateCode}`).setView([state.lat, state.lng], 12);
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-            
-            L.marker([state.lat, state.lng])
-                .addTo(map)
-                .bindPopup(`<b>${state.aquarium}</b><br>${state.name}`);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            L.marker([state.lat, state.lng]).addTo(map).bindPopup(state.aquarium);
         }
 
         function renderStates() {
             const list = document.getElementById('statesList');
             list.innerHTML = states.map(state => `
                 <div class="state-item" onclick="showState('${state.code}')">
-                    <div class="state-info">
+                    <div>
                         <span class="state-name">${state.name}</span>
                         <span class="state-code">${state.code}</span>
                     </div>
-                    <span class="aquarium-count">1 aquário</span>
+                    <span>1 aquário</span>
                 </div>
             `).join('');
         }
@@ -446,39 +295,8 @@
             container.innerHTML = states.map(state => `
                 <section class="section state-page" id="state-${state.code}">
                     <h1>Aquários - ${state.name}</h1>
-                    <div class="aquarium-list">
-                        <div class="aquarium-item">
-                            <span class="aquarium-name">${state.aquarium}</span>
-                            <span class="aquarium-location">${state.name}</span>
-                        </div>
-                    </div>
-                    
                     <div class="map-container">
                         <div id="map-${state.code}" class="leaflet-map"></div>
-                    </div>
-                    
-                    <div class="aquarium-details">
-                        <h3 style="color: #00ccff; margin-bottom: 1.5rem;">Informações do Aquário</h3>
-                        <div class="detail-item">
-                            <span class="detail-label">Localização:</span>
-                            <span>Capital de ${state.name}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Espécies:</span>
-                            <span>Mais de 200 espécies marinhas</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Horário:</span>
-                            <span>Terça a Domingo, 9h às 17h</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Atividades:</span>
-                            <span>Visitas guiadas, palestras educativas, alimentação dos peixes</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Conservação:</span>
-                            <span>Programas de reprodução e reabilitação de animais marinhos</span>
-                        </div>
                     </div>
                 </section>
             `).join('');
@@ -491,26 +309,17 @@
             setTimeout(() => initMap(code), 100);
         }
 
-        function showMain() {
-            document.getElementById('main-section').style.display = 'block';
-            document.querySelectorAll('.state-page').forEach(page => page.classList.remove('active'));
-        }
-
-        function filterStates() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.querySelectorAll('.state-item');
-            
-            items.forEach(item => {
-                const stateName = item.querySelector('.state-name').textContent.toLowerCase();
-                item.style.display = stateName.includes(search) ? 'flex' : 'none';
-            });
-        }
-
-        document.getElementById('searchInput').addEventListener('input', filterStates);
-
         function goBack() {
             window.history.back();
         }
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            document.querySelectorAll('.state-item').forEach(item => {
+                const stateName = item.querySelector('.state-name').textContent.toLowerCase();
+                item.style.display = stateName.includes(search) ? 'flex' : 'none';
+            });
+        });
 
         renderStates();
         createStatePages();

@@ -1,4 +1,4 @@
-
+import SobreNos from './components/SobreNos'
 
 function App() {
   const scrollToSection = (sectionId) => {
@@ -7,8 +7,6 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
-
-
 
   return (
     <div className="App">
@@ -24,9 +22,7 @@ function App() {
           <ul className="nav-links">
             <li><a href="#home" onClick={() => scrollToSection('home')}>Início</a></li>
             <li><a href="#sobre-nos" onClick={() => scrollToSection('sobre-nos')}>Sobre Nós</a></li>
-
             <li><a href="#actions" className="donate-btn" onClick={() => scrollToSection('actions')}>DOE</a></li>
-
           </ul>
         </nav>
       </header>
@@ -40,8 +36,6 @@ function App() {
       </section>
 
       <SobreNos />
-      
-
 
       <section id="threats" className="section">
         <h2>Principais Ameaças</h2>
